@@ -1,0 +1,21 @@
+VCD info: dumpfile riscproc_tb.vcd opened for output.
+PASS: r1  ADDI base  = 5
+PASS: r2  ADDI base  = 10
+PASS: r4  back-to-back fwd  = 15
+PASS: r5  back-to-back fwd #2  = 18
+PASS: r6  SUB  = 5
+PASS: r7  AND  = 0
+PASS: r8  OR  = 15
+PASS: r9  XOR  = 15
+PASS: r10 SLT  = 1
+PASS: r12 LW after SW  = 18
+PASS: r14 load-use stall result  = 21
+PASS: r15 BEQ not-taken fallthru  = 1
+PASS: r16 BEQ taken (must skip)  = 0
+PASS: r17 BEQ taken target  = 42
+PASS: r18 BNE not-taken fallthru  = 1
+PASS: r19 BNE taken target  = 7
+PASS: r21 dependent chain x3  = 8
+
+ALL TESTS PASSED
+tb/tb_riscproc.v:171: $finish called at 612000 (1ps)
