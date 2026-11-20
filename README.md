@@ -2,7 +2,7 @@
 
 A 32 bit RISC processor with a classic five stage pipeline, written in Verilog, with full hazard handling and a directed test suite.
 
-This is a from scratch design: the datapath, the control unit and the hazard handling are all mine. It runs a custom instruction set, not RISC V.
+This is a from scratch design: the datapath, the control unit and the hazard handling are all mine. It runs a custom instruction set. 
 
 ## What it does
 
@@ -60,10 +60,6 @@ Dependent instructions are the hard part of a pipeline, and this design handles 
 
 Results are checked against expected register contents after the program retires. Current state: all 17 pass, log in [docs/simulation_log.txt](docs/simulation_log.txt).
 
-Two bugs worth recording, both found by these tests:
-
-1. The forwarding unit originally compared the ID stage instruction's sources against the MEM and WB destinations, when it needed to compare the EX stage instruction's own sources. Off by one pipeline stage, and it silently produced stale operands.
-2. The branch flush originally squashed only the instruction in IF, not the one already in ID, so on a taken branch one wrong path instruction still executed and wrote its result.
 
 ## Repository layout
 
