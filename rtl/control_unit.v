@@ -8,8 +8,8 @@ module control_unit (
     input  [5:0]  opcode,
     input  [10:0] funct,
 
-    output        reg_write,     // write result back to register file
-    output        alu_src,       // 1 = ALU operand B comes from immediate
+    output        reg_write,     // write result back to register file at WB 
+    output        alu_src,       // 1 = ALU operand B comes from immediate, 0 means from rs
     output [3:0]  alu_op,
     output        mem_read,
     output        mem_write,
