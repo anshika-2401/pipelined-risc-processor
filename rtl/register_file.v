@@ -10,20 +10,22 @@
 // a result is written and read in the same clock edge due to the
 // pipeline's register-file timing; without it, back-to-back dependent
 // instructions separated by exactly enough stalls could read stale data.
-//
+// 
+
+//REMEMBER - WRITE IS SEQUENTIAL HERE AND READ IS COMBINATIONAL 
 
 module register_file (
     input         clk,
     input         rst,
 
-    input  [4:0]  read_addr1,
+    input  [4:0]  read_addr1,   //address of register port 1
     input  [4:0]  read_addr2,
-    output [31:0] read_data1,
+    output [31:0] read_data1,   //data inside the register connected to port 1
     output [31:0] read_data2,
 
     input         write_en,
-    input  [4:0]  write_addr,
-    input  [31:0] write_data
+    input  [4:0]  write_addr,  //which register to write into
+    input  [31:0] write_data  //the value to save
 );
 
     reg [31:0] regs [0:31];
@@ -39,7 +41,7 @@ module register_file (
     end
 
     // Combinational read with write-forwarding.
-    assign read_data1 = (write_en && write_addr == read_addr1) ? write_data : regs[read_addr1];
+    assign read_data1 = (write_en && write_addr == read_addr1) ? write_data : regs[read_addr1];  //Forwarding basically
     assign read_data2 = (write_en && write_addr == read_addr2) ? write_data : regs[read_addr2];
 
 endmodule
