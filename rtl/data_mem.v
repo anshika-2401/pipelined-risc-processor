@@ -9,10 +9,10 @@ module data_mem #(
     parameter DEPTH = 256
 ) (
     input         clk,
-    input  [31:0] addr,
+    input  [31:0] addr,    //where to read or write 
     input  [31:0] write_data,
-    input         mem_read,
-    input         mem_write,
+    input         mem_read,  //this is a load, so read
+    input         mem_write,  //this is a store so write 
     output [31:0] read_data
 );
 
